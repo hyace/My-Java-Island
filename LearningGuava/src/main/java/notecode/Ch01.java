@@ -21,7 +21,7 @@ public class Ch01 {
     public void joinerTest(){
         String[] stringList = {"C",null,"C++","Java","Python","Go",null,"Scala",null,null,"Haskell"};
         String join1 = Joiner.on("~").skipNulls().join(stringList);
-        System.out.println(Joiner.on("-").join(stringList));
+//        System.out.println(Joiner.on("-").join(stringList));
         System.out.println("Skip Nulls : "+join1);
         String join2 = Joiner.on("^").useForNull("Blank").join(stringList);
         System.out.println("Use For Null : "+ join2);
