@@ -1,4 +1,4 @@
-package other;
+package practice;
 
 import org.junit.Test;
 
