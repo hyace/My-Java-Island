@@ -15,6 +15,7 @@
         <module>LearningRedis</module>
         <module>LearningSpring</module>
         <module>WhiteBoard</module>
+        <module>common</module>
     </modules>
     <dependencyManagement>
         <dependencies>

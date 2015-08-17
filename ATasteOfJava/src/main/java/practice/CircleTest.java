@@ -5,7 +5,7 @@ import org.junit.Test;
 /**
  * Created by Chyace on 2015/7/21.
  */
-public class InterviewTest {
+public class CircleTest {
     @Test
     public void interview1() {
         /*
