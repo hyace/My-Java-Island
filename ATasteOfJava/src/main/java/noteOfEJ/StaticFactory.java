@@ -1,6 +1,7 @@
 package noteOfEJ;
 
 import enumeration.Num;
+import enumeration.Planet;
 import org.junit.Test;
 
 import java.math.BigInteger;
@@ -22,9 +23,9 @@ public class StaticFactory {
 //        BigInteger a = BigInteger.probablePrime(5,new Random(9000));
 //        System.out.println(a);
         //EnumSet，枚举类型<=64个，静态方法返回RegalarEnumSet，long支持；>64，返回jumboEnumSet,long数组支持
-        EnumSet<Num> numSet = EnumSet.allOf(Num.class);
+        EnumSet<Num> numSet = EnumSet.range(Num.四, Num.三十四);
         System.out.println(numSet.getClass());
-        EnumSet<Num> numSetII = EnumSet.range(Num.四,Num.三十四);
+        EnumSet<Planet> numSetII = EnumSet.allOf(Planet.class);
         System.out.println(numSetII.getClass());
     }
 }
