@@ -22,7 +22,7 @@ public class CollectionTools {
 
     public static <T> void print(Node<T> start) {
         for (Node<T> p = start; p != null; p = p.getNext()) {
-            System.out.print("[" + p + "]");
+            System.out.print("[" + p.getValue() + "]");
         }
         System.out.println();
     }

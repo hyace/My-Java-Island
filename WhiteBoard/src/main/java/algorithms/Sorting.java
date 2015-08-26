@@ -94,22 +94,22 @@ public class Sorting {
 
     private static <T extends Comparable> void merge(T[] arr, int left, int mid, int right) {
         int i = left, j = mid + 1;
-        Object[] temp = new Object[right-left+1];
+        Object[] temp = new Object[right - left + 1];
         int p;
-        for(p=0;p<temp.length;p++){
-            if(i>mid){
-                temp[p]=arr[j++];
-            }else if(j>right){
-                temp[p]=arr[i++];
-            }else if(arr[i].compareTo(arr[j])<=0){
-                temp[p]=arr[i++];
-            }else {
+        for (p = 0; p < temp.length; p++) {
+            if (i > mid) {
+                temp[p] = arr[j++];
+            } else if (j > right) {
+                temp[p] = arr[i++];
+            } else if (arr[i].compareTo(arr[j]) <= 0) {
+                temp[p] = arr[i++];
+            } else {
                 temp[p] = arr[j++];
             }
         }
         p--;
-        while(p>0){
-            arr[left+p]=(T)temp[p--];
+        while (p > 0) {
+            arr[left + p] = (T) temp[p--];
         }
     }
 }
