@@ -2,6 +2,8 @@ package practice;
 
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 /**
  * Created by Chyace on 2015/7/21.
  */

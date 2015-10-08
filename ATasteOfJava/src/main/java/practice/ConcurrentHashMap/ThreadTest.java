@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by Chyace on 2015/8/21.
@@ -27,5 +28,6 @@ public class ThreadTest {
         }, "ftf");
         t.start();
         t.join();
+//        ConcurrentHashMap
     }
 }
