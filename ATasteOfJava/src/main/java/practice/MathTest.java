@@ -1,13 +1,12 @@
 package practice;
 
 import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Random;
+import java.util.*;
 import java.util.zip.CRC32;
 
 /**
@@ -138,6 +137,28 @@ public class MathTest {
             crc32.update(str.getBytes());
             System.out.println(i+" : "+crc32.getValue()%100);
         }
+        System.out.println(new Date().getTime());
+        System.out.println(System.currentTimeMillis());
+    }
+    @Test
+    public void testActive(){
+        List<Integer> list = Lists.newArrayList(1,1,1,1,1,1,1,1);
+        List<Integer> attr = Lists.newArrayList(45, 60, 105);
+        System.out.println(getActiveNumerator(list, attr));
 
+    }
+    private List<Integer> getActiveNumerator(List<Integer> ordersDisArr, List<Integer> customerAttrArr) {
+        List<Integer> result = new ArrayList<Integer>();
+        int index = 0;
+        for (int i = 0; i < customerAttrArr.size(); i++) {
+            int factor = (i == 0 ? (Integer.valueOf(customerAttrArr.get(i))) / 15 : (Integer.valueOf(customerAttrArr.get(i)) - Integer.valueOf(customerAttrArr.get(i - 1))) / 15);
+            int value = 0;
+            for (int j = 0; j < factor; j++) {
+                value += Double.valueOf(ordersDisArr.get(index+j));
+            }
+            index += factor;
+            result.add(value);
+        }
+        return result;
     }
 }

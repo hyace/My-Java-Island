@@ -14,6 +14,7 @@
 
     <context:property-placeholder location="database.properties"/>
     <context:component-scan base-package="service"/>
+    <context:component-scan base-package="aop"/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${database.driverClassName}"/>
@@ -28,7 +29,7 @@
         <!-- 配置mybatis配置文件的位置 -->
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
 
-        <property name="mapperLocations" value="classpath:mapper.*.xml"/>
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
     </bean>
     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg ref="sqlSessionFactory"/>
@@ -37,6 +38,7 @@
         <property name="basePackage" value="dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
-
+    
+    <import resource="aop-context.xml"/>
 
 </beans>

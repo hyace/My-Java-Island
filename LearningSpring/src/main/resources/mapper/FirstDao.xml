@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.FirstDao">
+    <resultMap id="BaseResultMap" type="domain.Table">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="value" property="value" jdbcType="VARCHAR"/>
+        <result column="dt" property="dt" jdbcType="DATE"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, value, dt
+    </sql>
+    <select id="selectTable" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from table0
+        where id = #{id}
+    </select>
+    <insert id="insertTable" parameterType="domain.Table">
+        insert into table0
+        (
+        <include refid="Base_Column_List"/>
+        )
+        VALUES
+        (
+        #{table.id},
+        #{table.value},
+        #{table.dt}
+        )
+    </insert>
+    <update id="insertOrUpdateTable">
+        insert into table0
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="table.id != null">
+            id,
+            </if>
+            <if test="table.value !=null">
+            value,
+            </if>
+            <if test="table.dt !=null">
+            dt,
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides="," >
+            <if test="table.id != null">
+                #{table.id},
+            </if>
+            <if test="table.value !=null">
+                #{table.value},
+            </if>
+            <if test="table.dt !=null">
+                #{table.dt},
+            </if>
+        </trim>
+        on duplicate KEY
+        update
+        <trim suffixOverrides="," >
+            <if test="table.value !=null">
+              value = #{table.value},
+            </if>
+            <if test="table.dt !=null">
+              dt = #{table.dt},
+            </if>
+        </trim>
+    </update>
+    <update id="update" parameterType="domain.Table">
+        update table0
+        set
+        <trim suffixOverrides="," >
+            <if test="value !=null">
+                value = #{value, jdbcType=VARCHAR},
+            </if>
+            <if test="dt !=null">
+                dt = #{dt, jdbcType=DATE},
+            </if>
+        </trim>
+        where id = #{id, jdbcType=INTEGER}
+    </update>
+    <update id="updateTest">
+        update table0
+        set
+        <trim suffixOverrides="," >
+            <if test="table.value !=null">
+                value = #{table.value},
+            </if>
+            <if test="table.dt !=null">
+                dt = #{table.dt},
+            </if>
+        </trim>
+        where id = #{table.id}
+    </update>
+    <select id="testSqlDate" resultType="java.lang.Long">
+        select unix_timestamp(#{date}) from dual;
+    </select>
+</mapper>
